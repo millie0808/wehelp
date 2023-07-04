@@ -1,9 +1,9 @@
 body{
-        font-size:20px;
-        font-family: Times, Times New Roman, serif;
-        margin:0;
+    font-size:20px;
+    font-family: Times, Times New Roman, serif;
+    margin:0;
     }
-.title{
+.header{
     height:40px;
     line-height:40px;
     margin-left:10px;
@@ -30,8 +30,8 @@ body{
     height:250px;
     font-size:2em;
     font-weight: bold;
-    text-align: center;
-    line-height:250px;
+    text-align: center;  
+    line-height:250px;   
     background-color:bisque;
 }
 
@@ -43,9 +43,8 @@ body{
 }
 .promo_item{
     height:50px;
-    width:33%;
-    background-color:bisque;
     flex-grow: 1;
+    background-color:bisque;
     display:flex;
 }
 .promo_text{
@@ -67,8 +66,8 @@ body{
 .box_item{
     height:300px;
     width:15%;
-    background-color:bisque;
     flex-grow: 1;
+    background-color:bisque;
 }
 .box_text{
     line-height: 50px;
@@ -77,22 +76,22 @@ body{
 .box_pic{
     object-fit: cover;
     width: 100%;
-    height: 250px;
+    height: 250px;  
 }
 
 @media (max-width:1200px){
     .promo{
-        width:90%;
+        width: 90%;
         flex-wrap: wrap;
     }
     .promo_item{
         width: 45%;
     }
     .box{
-        width:90%;
+        width: 90%;
     }
     .box_item{
-        width:22%;
+        width: 22%;  
     }
 }
 
