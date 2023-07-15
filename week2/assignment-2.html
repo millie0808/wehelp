@@ -3,11 +3,12 @@
         <script>
             
             // task1
+            console.log("===task1===")
             function findAndPrint(messages){
                 // 提到"I'm 18 years old" 
                 // 或是"I'm a college student"
                 // 或是"I am of legal age"
-                for (var i = 0;i < Object.keys(messages).length;i++){
+                for (let i = 0;i < Object.keys(messages).length;i++){
                     if (Object.values(messages)[i].includes("I'm 18 years old")){
                         console.log(Object.keys(messages)[i])
                     }else if (Object.values(messages)[i].includes("I'm a college student")){
