@@ -18,20 +18,20 @@ for x in data['result']['results']:
     # 緯度 x['latitude']
     # 圖檔網址 pic
     pic = x['file'][0:x['file'].find('https:',1)]
-    # 使用list儲存以上資訊
+    # 使用list(attraction)儲存以上資訊
     attraction.append([x['stitle'],address,x['longitude'],x['latitude'],pic])
-    # 使用dictionary儲存捷運站資訊(key:捷運站,value:景點)
+    # 使用dictionary(mrt)儲存捷運站資訊(key:捷運站,value:景點)
     if x['MRT'] == None:
         continue
     elif x['MRT'] not in mrt.keys():
         mrt.update({x['MRT']:[x['stitle']]})
     else:
         mrt[x['MRT']].append(x['stitle'])
-# list轉csv
+# list(attraction)轉csv
 with open('attraction.csv','w',newline='') as f:
     writer = csv.writer(f)
     writer.writerows(attraction)
-# dictionary轉csv
+# dictionary(mrt)轉csv
 dict_to_csv ="\n".join([k+','+','.join(v) for k,v in mrt.items()]) 
 with open('mrt.csv','w',newline='') as f:
     f.write(dict_to_csv)
