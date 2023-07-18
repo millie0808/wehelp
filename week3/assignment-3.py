@@ -47,7 +47,7 @@ def getTime(url):
         data = response.read().decode("utf-8")
     root = bs4.BeautifulSoup(data, "html.parser")
     details =[item.get_text(strip=True) for item in root.find_all(class_="article-meta-value")]
-    return details[3]
+    return details[3] # 時間資料在第4個
 
 def getData(url):
     # 建立一個 Request 物件，附加 Request Headers 資訊
