@@ -78,5 +78,5 @@ def getData(url):
 
 
 pageURL = 'https://www.ptt.cc/bbs/movie/index.html'
-for i in range(0,3):
+for i in range(0,3): # 連續爬取3頁
     pageURL = 'https://www.ptt.cc'+getData(pageURL)
