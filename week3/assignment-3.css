@@ -1,0 +1,158 @@
+body{
+    font-size:20px;
+    /* font-family: Times, Times New Roman, serif;*/
+    font-family:"微軟正黑體";
+    margin:0;
+    }
+.header{
+    height:40px;
+    line-height:40px;
+    margin-left:10px;
+}
+.desktop_menu{
+    line-height:height/2;
+    float:right;
+    display:block;
+    margin-right:10px;
+    display: flex;
+    gap:20px;
+}
+.desktop_menu > a{
+    text-decoration:none;
+    color:black;
+}
+
+.mobile_menu{
+    float:right;
+    margin-right:10px;
+    display:none;
+}
+#burger{
+    display: none;
+}
+.mobile_menu_pop {
+    background-color: white;
+    z-index: 1;
+}
+.mobile_menu_pop > ul{
+    list-style-type:none;
+}
+.mobile_menu_pop > ul > li > a{
+    text-decoration:none;
+    color:black;
+}
+
+
+.banner{
+    height:250px;
+    font-size:2em;
+    font-weight: bold;
+    text-align: center;  /*水平置中*/
+    line-height:250px;   /*文字垂直置中*/
+    background-color:bisque;
+}
+
+.promo{
+    width:1200px;
+    margin:0 auto;
+    display:flex;
+    gap:20px;
+    @media (max-width:1200px){
+        width: 90%;
+        flex-wrap: wrap;
+    }
+}
+.promo_item{
+    height:50px;
+    flex-grow: 1;
+    background-color:bisque;
+    display:flex;
+}
+.promo_text{
+    line-height: 50px;
+    margin-left: 10px;
+}
+.promo_pic{
+    width:80px;
+    height:50px;
+}
+
+.box{
+    width:1200px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap: wrap;
+    gap:20px;
+}
+.box_item{
+    height:350px;
+    width:15%;
+    flex-grow: 1;
+    background-color:bisque;
+}
+.box_text{
+    text-align: center;
+    word-break: break-word;
+    word-wrap: break-word;
+    margin-block-end: 20px;
+    margin-block-start: 20px;
+}
+.box_pic{
+    object-fit: cover;
+    width: 100%;
+    height: 250px;   /*300-50=250*/
+}
+
+.button{
+    display: flex;
+    justify-content: center;  
+}
+.button > button{
+    font-size: 15px;
+    width:120px;
+    height:40px; 
+}
+.button > button:hover{
+    color:gray;
+    background-color:#fff;
+    border:2px gainsboro solid;
+}
+
+
+@media (max-width:1200px){
+    .promo_item{
+        width: 45%;
+    }
+    .box{
+        width: 90%;
+    }
+    .box_item{
+        width: 22%;   /*90/4=22.5 小數點可能不能運算，會自動四捨五入？*/
+    }
+}
+
+@media (max-width:600px){
+    .promo_item{
+        width:100%;
+    }
+    .box_item{
+        width: 100%;
+        height: 300px;
+        text-align: center;
+    }
+    .box_text{
+        all: unset;
+        line-height: 50px;
+    }
+    .desktop_menu{
+        display:none;
+    }
+    .mobile_menu{
+        display:block;
+    }
+}
+@media (max-width:415px){
+    .banner{
+        font-size:34px;
+    }
+}

@@ -1,0 +1,116 @@
+<html>
+  <head>
+    <title>My Website</title>
+    <meta name="viewport" content="width=device-width initial-scale=1.0" charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="assignment-3.css">
+  </head>
+  <body>
+    <div class="header">
+        <span style="font-weight: bold;">My Website</span>
+        <nav class="desktop_menu">
+            <a href="">Item1</a> 
+            <a href="">Item2</a>
+            <a href="">Item3</a>
+            <a href="">Item4</a>
+        </nav>
+        <span class="mobile_menu">
+            <img src="hamburger.png" width="40" height="40"/>
+        </span>
+    </div>
+    <div class="banner">
+        Welcome to MyHome
+    </div>
+
+    </br>
+
+    <div id="promo"></div>
+
+    <div style="height: 20px;"></div>
+    
+    <div id="box"></div>
+
+    <div style="height: 20px;"></div>
+
+    <div id="button" class="button" onclick="loadmore();"><button>Load More</button></div>
+    
+    <div style="height: 20px;"></div>
+    <script>
+        //要求三
+        fetch('https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment.json').then(function(response){
+            return response.json();
+        }).then(function(data){
+            alist = data.result.results;
+
+            let promoElem = document.querySelector("#promo");
+            promoElem.classList.add("promo");
+            for (i=0;i<3;i++){
+                let promoItemElem = document.createElement("div");
+                let promoPicElem = document.createElement("img");
+                let promoTextElem = document.createElement("div");
+
+                promoItemElem.classList.add("promo_item");
+                promoPicElem.classList.add("promo_pic");
+                promoTextElem.classList.add("promo_text");
+
+                let picindex = alist[i].file.indexOf("https:",1)
+                let src = alist[i].file.substr(0,picindex)
+                promoPicElem.src = src
+                promoTextElem.textContent = alist[i].stitle;
+                promoElem.appendChild(promoItemElem);
+                promoItemElem.appendChild(promoPicElem);
+                promoItemElem.appendChild(promoTextElem);
+            }
+
+            let boxElem = document.querySelector("#box");
+            boxElem.classList.add("box");
+            for (i=3;i<15;i++){
+                let boxItemElem = document.createElement("div");
+                let boxPicElem = document.createElement("img");
+                let boxTextElem = document.createElement("div");
+
+                boxItemElem.classList.add("box_item");
+                boxPicElem.classList.add("box_pic");
+                boxTextElem.classList.add("box_text");
+
+                let picindex = alist[i].file.indexOf("https:",1)
+                let src = alist[i].file.substr(0,picindex)
+                boxPicElem.src = src
+                boxTextElem.textContent = alist[i].stitle;
+                boxElem.appendChild(boxItemElem);
+                boxItemElem.appendChild(boxPicElem);
+                boxItemElem.appendChild(boxTextElem);
+            }
+        });
+
+        // 要求四
+        let load_start = 15;
+        let load_num = 12;
+        function loadmore(){
+            if (load_start + load_num > 57){
+                load_num = 58 - load_start
+                let buttonElem = document.querySelector("#button");
+                buttonElem.style.display = "none";
+            }
+            let boxElem = document.querySelector("#box");
+            for (i=load_start;i<load_start+load_num;i++){
+                let boxItemElem = document.createElement("div");
+                let boxPicElem = document.createElement("img");
+                let boxTextElem = document.createElement("div");
+
+                boxItemElem.classList.add("box_item");
+                boxPicElem.classList.add("box_pic");
+                boxTextElem.classList.add("box_text");
+
+                let picindex = alist[i].file.indexOf("https:",1)
+                let src = alist[i].file.substr(0,picindex)
+                boxPicElem.src = src
+                boxTextElem.textContent = alist[i].stitle;
+                boxElem.appendChild(boxItemElem);
+                boxItemElem.appendChild(boxPicElem);
+                boxItemElem.appendChild(boxTextElem);
+            }
+            load_start += 12
+        }
+    </script>
+  </body>
+</html>
