@@ -60,18 +60,19 @@ def getData(url):
     root = bs4.BeautifulSoup(data, "html.parser")
     articles = root.find_all("div",class_="r-ent")
     for article in articles:
-        # 文章標題 article.a.string
-        # 推文數量 reply
-        if article.span == None:
-            reply = '0'
-        else:
-            reply = article.span.string
-        # 發布時間 time
-        articleLink = "https://www.ptt.cc"+article.a['href']
-        time = getTime(articleLink)
-        # 存成txt
-        with open('movie.txt','a',newline='') as f:
-            f.write(article.a.string+','+reply+','+time+'\n')
+        if article.a != None: # 若文章未被刪除
+            # 文章標題 article.a.string
+            # 推文數量 reply
+            if article.span == None:
+                reply = '0'
+            else:
+                reply = article.span.string
+            # 發布時間 time
+            articleLink = "https://www.ptt.cc"+article.a['href']
+            time = getTime(articleLink)
+            # 存成txt
+            with open('movie.txt','a',newline='') as f:
+                f.write(article.a.string+','+reply+','+time+'\n')
 
     nextLink = root.find("a",string="‹ 上頁")
     return nextLink['href']
