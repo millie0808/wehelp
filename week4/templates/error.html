@@ -1,13 +1,16 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <title>歡迎光臨</title>
+        <link rel="stylesheet" type="text/css" href="/allpage.css">
     </head>
     <body>
-        <div>失敗頁面</div>
+        <div class="header">失敗頁面</div>
+        <br/>
         {% if message == '請輸入帳號密碼' %}
-        <div>請輸入帳號密碼</div>
+        <div class="content">請輸入帳號密碼</div>
         {% else %}
-        <div>帳號或密碼輸入錯誤</div>
+        <div class="content">帳號或密碼輸入錯誤</div>
         {% endif %}
     </body>
 </html>

@@ -1,27 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>歡迎光臨</title>
         <meta charset="utf-8"/>
+        <title>歡迎光臨</title>
+        <link rel="stylesheet" type="text/css" href="/allpage.css">
     </head>
     <body>
-        <div>歡迎光臨，請輸入帳號密碼</div>
-        <div>登入系統</div>
-        <form method="POST" onsubmit="return login()">
-            <div>帳號<input type="text" name="account" /></div>
-            <div>密碼<input type="text" name="password" /></div>
-            <div>同意條款<input type="checkbox" name="agree" id="agree"/></div>
-            <div><input type="submit" name="send" value="登入" /></div>
+        <div class="header">歡迎光臨，請輸入帳號密碼</div>
+        <div class="caption">登入系統</div>
+        <form method="POST" onsubmit="return login()" action="/signin">
+            <div class="content">帳號 <input type="text" name="account" /></div>
+            <div class="content">密碼 <input type="text" name="password" /></div>
+            <div class="content">同意條款 <input type="checkbox" name="agree" id="agree"/></div>
+            <div class="content"><input type="submit" name="send" value="登入"/></div>
         </form>
+        <br/>
+        <hr/>
+        <div class="caption">計算正整數的平方</div>
+        <div class="content">正整數 <input type="number" name="number" id="number"/></div>
+        <div class="content"><button onclick="checkPositive()">計算</button></div>
+       
         
         <script>
             function login(){
-                let agree = document.querySelector("#agree")
+                let agree = document.querySelector("#agree");
                 if(agree.checked == false){
                     window.alert("請先勾選同意條款");
                     return false; // 阻止form提交
                 }
                 return true; // 允許表form提交
+            }
+            function checkPositive(){
+                let number = document.querySelector("#number").value;
+                if(number < 0){
+                    window.alert("請輸入正整數");
+                }
+                else{
+                    window.location.href = '/square/'+number;
+                }
             }
         </script>
     </body>
