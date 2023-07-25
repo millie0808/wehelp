@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>歡迎光臨</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div>歡迎光臨，請輸入帳號密碼</div>
+        <div>登入系統</div>
+        <form method="POST" onsubmit="return login()">
+            <div>帳號<input type="text" name="account" /></div>
+            <div>密碼<input type="text" name="password" /></div>
+            <div>同意條款<input type="checkbox" name="agree" id="agree"/></div>
+            <div><input type="submit" name="send" value="登入" /></div>
+        </form>
+        
+        <script>
+            function login(){
+                let agree = document.querySelector("#agree")
+                if(agree.checked == false){
+                    window.alert("請先勾選同意條款");
+                    return false; // 阻止form提交
+                }
+                return true; // 允許表form提交
+            }
+        </script>
+    </body>
+</html>

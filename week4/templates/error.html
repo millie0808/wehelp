@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <div>失敗頁面</div>
+        {% if message == '請輸入帳號密碼' %}
+        <div>請輸入帳號密碼</div>
+        {% else %}
+        <div>帳號或密碼輸入錯誤</div>
+        {% endif %}
+    </body>
+</html>
