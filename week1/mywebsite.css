@@ -2,11 +2,14 @@ body{
     font-size:20px;
     font-family: Times, Times New Roman, serif;
     margin:0;
-    }
+}
 .header{
     height:40px;
     line-height:40px;
-    margin-left:10px;
+    z-index: 1000;
+    position: sticky;
+    top:0;
+    background-color: white;
 }
 .desktop_menu{
     line-height:height/2;
@@ -37,6 +40,8 @@ body{
     transform: translateX(125px);
     transition: transform 250ms ease-in-out;
     background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 .sidebarMenuInner{
     padding: 0;
@@ -101,19 +106,31 @@ input[type=checkbox]{
     gap:20px;
 }
 .box_item{
-    height:300px;
+    height:250px;
     width:15%;
     flex-grow: 1;
     background-color:bisque;
+    position: relative;
 }
 .box_text{
     line-height: 50px;
     text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: bisque;
+    opacity:0.6;
 }
 .box_pic{
     object-fit: cover;
     width: 100%;
     height: 250px;  
+}
+.star_pic{
+    position: absolute;
+    max-width: 30px;
+    right: 10px;
+    top: 10px;
 }
 
 @media (max-width:1200px){
