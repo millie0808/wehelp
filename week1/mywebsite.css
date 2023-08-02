@@ -20,10 +20,47 @@ body{
     text-decoration:none;
     color:black;
 }
+
 .mobile_menu{
     float:right;
     margin-right:10px;
     display:none;
+}
+.sidebarIcon{
+    cursor: pointer;
+}
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    right: 0;
+    width: 125px;
+    transform: translateX(125px);
+    transition: transform 250ms ease-in-out;
+    background-color: white;
+}
+.sidebarMenuInner{
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+    list-style:none;
+    border-top: 1px solid gainsboro;
+}
+.sidebarMenuInner > li{
+    border-bottom: 1px solid gainsboro;
+    padding: 8px;
+}
+.sidebarMenuInner > li > a{
+    text-decoration:none;
+    color:black;
+    cursor: pointer;
+}
+input[type="checkbox"]:checked ~ #sidebarMenu{
+    transform: translateX(0);
+}
+input[type=checkbox]{
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
 }
 
 .banner{
