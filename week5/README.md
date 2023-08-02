@@ -14,26 +14,31 @@ insert into member(name,username,password,follower_count,time) values('Yoon Jeon
 select * from member;
 ~~~~
 ![3.2](png/3.2.png)
+
 3. 
 ~~~~sql
 select * from member order by time DESC;
 ~~~~
 ![3.3](png/3.3.png)
+
 4. 
 ~~~~sql
 select * from member order by time DESC limit 1,3;
 ~~~~
 ![3.4](png/3.4.png)
+
 5. 
 ~~~~sql
 select * from member where username='test';
 ~~~~
 ![3.5](png/3.5.png)
+
 6. 
 ~~~~sql
 select * from member where username='test' and password='test';
 ~~~~
 ![3.6](png/3.6.png)
+
 7. 
 ~~~~sql
 update member set name='test2' where username='test';
@@ -46,11 +51,13 @@ update member set name='test2' where username='test';
 select count(*) from member;
 ~~~~
 ![4.1](png/4.1.png)
+
 2. 
 ~~~~sql
 select sum(follower_count) from member;
 ~~~~
-![4.1](png/4.2.png)
+![4.2](png/4.2.png)
+
 3. 
 ~~~~sql
 select avg(follower_count) from member;
