@@ -8,27 +8,26 @@
     <body>
         <div class="header">歡迎光臨，請輸入帳號密碼</div>
         <div class="caption">登入系統</div>
-        <form method="POST" onsubmit="return login()" action="/signin">
+        <form method="POST" onsubmit="return checkCheck()" action="/signin">
             <div class="content">帳號 <input type="text" name="account" /></div>
             <div class="content">密碼 <input type="text" name="password" /></div>
             <div class="content">同意條款 <input type="checkbox" name="agree" id="agree"/></div>
-            <div class="content"><input type="submit" name="send" value="登入"/></div>
+            <div class="content"><button>登入</button></div>
         </form>
         <br/>
         <hr/>
         <div class="caption">計算正整數的平方</div>
         <div class="content">正整數 <input type="number" name="number" id="number"/></div>
         <div class="content"><button onclick="checkPositive()">計算</button></div>
-       
         
         <script>
-            function login(){
+            function checkCheck(){
                 let agree = document.querySelector("#agree");
                 if(agree.checked == false){
                     window.alert("請先勾選同意條款");
                     return false; // 阻止form提交
                 }
-                return true; // 允許表form提交
+                return true; // 允許form提交
             }
             function checkPositive(){
                 let number = document.querySelector("#number").value;

@@ -8,7 +8,7 @@
         <div class="header">失敗頁面</div>
         <br/>
         {% if message == '請輸入帳號密碼' %}
-        <div class="content">請輸入帳號密碼</div>
+        <div class="content">請輸入帳號密碼</div>  <!--或是直接寫{{ message }}，此處只是練習{% if %}-->
         {% else %}
         <div class="content">帳號或密碼輸入錯誤</div>
         {% endif %}
