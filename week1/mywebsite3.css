@@ -1,0 +1,168 @@
+body{
+    font-size:20px;
+    font-family: Times, Times New Roman, serif;
+    margin:0;
+}
+.header{
+    height:40px;
+    line-height:40px;
+    margin-left: 10px;
+}
+.desktop_menu{
+    line-height:height/2;
+    float:right;
+    display:block;
+    margin-right:10px;
+    display: flex;
+    gap:20px;
+}
+.desktop_menu > a{
+    text-decoration:none;
+    color:black;
+}
+
+.mobile_menu{
+    float:right;
+    margin-right:10px;
+    display:none;
+}
+.sidenavIcon{
+    cursor: pointer;
+}
+.sidenavIconX{
+    cursor: pointer;
+
+}
+#sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top:0;
+    right: 0;
+    transition: transform 250ms ease-in-out;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow-x: hidden;
+}
+.sidenavInner{
+    padding: 0;
+    margin: 0;
+    text-align: center; 
+    list-style:none;
+    border-top: 1px solid gainsboro;
+}
+.sidenavInner > li{
+    border-bottom: 1px solid gainsboro;
+    height: 40px;
+}
+.sidenavInner > li > a{
+    text-decoration:none;
+    color:black;
+    cursor: pointer;
+}
+input[type=checkbox] {           /*checkbox小圖示消失*/
+    transition: all 0.3s;
+    display: none;
+}
+
+.banner{
+    height:250px;
+    font-size:2em;
+    font-weight: bold;
+    text-align: center;  /*水平置中*/
+    line-height:250px;   /*文字垂直置中*/
+    background-color:bisque;
+}
+
+.promo{
+    width:1200px;
+    margin:0 auto;
+    display:flex;
+    gap:20px;
+}
+.promo_item{
+    height:50px;
+    flex-grow: 1;
+    background-color:bisque;
+    display:flex;
+}
+.promo_text{
+    line-height: 50px;
+    margin-left: 10px;
+}
+.promo_pic{
+    width:80px;
+    height:50px;
+}
+
+.box{
+    width:1200px;
+    margin:0 auto;
+    display:flex;
+    flex-wrap: wrap;
+    gap:20px;
+}
+.box_item{
+    height:250px;
+    width:15%;
+    flex-grow: 1;
+    background-color:bisque;
+    position: relative;
+}
+.box_text{
+    line-height: 50px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: bisque;
+    opacity:0.6;
+}
+.box_pic{
+    object-fit: cover;
+    width: 100%;
+    height: 250px;   /*300-50=250*/
+}
+.star_pic{
+    position: absolute;
+    max-width: 30px;
+    right: 10px;
+    top: 10px;
+}
+
+@media (max-width:1200px){
+    .promo{
+        width: 90%;
+        flex-wrap: wrap;
+    }
+    .promo_item{
+        width: 45%;
+    }
+    .box{
+        width: 90%;
+    }
+    .box_item{
+        width: 22%;   /*90/4=22.5 小數點可能不能運算，會自動四捨五入？*/
+    }
+}
+
+@media (max-width:600px){
+    .promo_item{
+        width:100%;
+    }
+    .box_item{
+        width:100%;
+    }
+    .desktop_menu{
+        display:none;
+    }
+    .mobile_menu{
+        display:block;
+    }
+}
+@media (max-width:415px){
+    .banner{
+        font-size:34px;
+    }
+}
