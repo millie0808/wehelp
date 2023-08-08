@@ -11,7 +11,7 @@
         <form method="POST" onsubmit="return checkSignUp()" action="/signup">
             <div class="content">姓名 <input type="text" name="name" /></div>
             <div class="content">帳號 <input type="text" name="usernameUp" /></div>
-            <div class="content">密碼 <input type="text" name="passwordUp" /></div>
+            <div class="content">密碼 <input type="password" name="passwordUp" /></div>
             <div class="content"><button>註冊</button></div>
         </form>
         <br/>
@@ -19,7 +19,7 @@
         <div class="caption">登入系統</div>
         <form method="POST" onsubmit="return checkSignIn()" action="/signin">
             <div class="content">帳號 <input type="text" name="usernameIn" /></div>
-            <div class="content">密碼 <input type="text" name="passwordIn" /></div>
+            <div class="content">密碼 <input type="password" name="passwordIn" /></div>
             <div class="content"><button>登入</button></div>
         </form>
         
@@ -42,9 +42,7 @@
                     window.alert("請先填寫登入資訊");
                     return false;
                 } 
-                else{
-                    return true;
-                }
+                return true;
             }
         </script>
     </body>

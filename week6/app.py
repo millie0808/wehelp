@@ -38,29 +38,24 @@ def signin():
     username = request.form.get('usernameIn')
     password = request.form.get('passwordIn')
     cursor = mydb.cursor(dictionary=True)
-    cursor.execute("SELECT id,name,username,password FROM member WHERE username=%s;",(username,))
-    #query_result = dict(zip(cursor.column_names, cursor.fetchone()))
+    cursor.execute("SELECT id,name,username,password FROM member WHERE username=%s AND password=%s;",(username,password))
     query_result = cursor.fetchone()
     cursor.close()
     if query_result == None:
         session['SIGNED-IN'] = False
         return redirect(url_for('error', message='帳號或密碼輸入錯誤'))
-    elif password == query_result['password']:
+    else:
         session['SIGNED-IN'] = True
         session['id'] = query_result['id']
         session['name'] = query_result['name']
         session['username'] = query_result['username']
         return redirect(url_for('member'))
-    else:
-        session['SIGNED-IN'] = False
-        return redirect(url_for('error', message='帳號或密碼輸入錯誤'))
 
 @app.route('/member')
 def member():
     if session['SIGNED-IN'] == True:
         member_name = session['name']
         member_id = session['id']
-        # 獲取資料庫table message
         cursor = mydb.cursor(dictionary=True)
         cursor.execute("SELECT message.*,member.name FROM message LEFT JOIN member ON message.member_id=member.id;")
         all_message = cursor.fetchall()
@@ -101,8 +96,6 @@ def deleteMessage():
     cursor.close()
     return redirect(url_for('member'))
 
-    
-    
 
 if __name__ == '__main__':
 	app.run(port='3000',debug=True)

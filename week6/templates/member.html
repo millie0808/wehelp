@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>歡迎光臨</title>
+        <title>會員頁面</title>
         <link rel="stylesheet" type="text/css" href="/allpage.css">
     </head>
     <body>
@@ -18,20 +18,24 @@
             <div class="content"><button>送出</button></div>
         </form>
         <hr>
+        <div class="caption">留言板</div>
         {% for message in all_message %}
         <div class="message">
             <div>{{ message['name'] }}：{{ message['content'] }}&ensp;</div>
             {% if message['member_id'] == member_id %}
-            <form method="POST" action="/deleteMessage">
+            <form method="POST" onsubmit="return confirmDelete()" action="/deleteMessage">
                 <input type="hidden" name="messageID" value="{{ message['id'] }}">
-                <button onclick="confirmDelete()">X</button>
+                <button>X</button>
             </form>
             {% endif %}
         </div>  
         {% endfor %}
         <script>
             function confirmDelete(){
-                confirm("確定要刪除嗎？");
+                if(confirm("確定要刪除這則留言嗎？")){
+                    return true;
+                }
+                return false;
             }
         </script>
         
