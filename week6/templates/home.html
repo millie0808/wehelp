@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>歡迎光臨</title>
+        <link rel="stylesheet" type="text/css" href="/allpage.css">
+    </head>
+    <body>
+        <div class="header">歡迎光臨，請註冊登入系統</div>
+        <div class="caption">註冊帳號</div>
+        <form method="POST" onsubmit="return checkSignUp()" action="/signup">
+            <div class="content">姓名 <input type="text" name="name" /></div>
+            <div class="content">帳號 <input type="text" name="usernameUp" /></div>
+            <div class="content">密碼 <input type="text" name="passwordUp" /></div>
+            <div class="content"><button>註冊</button></div>
+        </form>
+        <br/>
+        <hr/>
+        <div class="caption">登入系統</div>
+        <form method="POST" onsubmit="return checkSignIn()" action="/signin">
+            <div class="content">帳號 <input type="text" name="usernameIn" /></div>
+            <div class="content">密碼 <input type="text" name="passwordIn" /></div>
+            <div class="content"><button>登入</button></div>
+        </form>
+        
+        
+        <script>
+            function checkSignUp(){
+                let name = document.querySelector('input[name="name"]').value;
+                let username = document.querySelector('input[name="usernameUp"]').value;
+                let password = document.querySelector('input[name="passwordUp"]').value;
+                if((name == null || name == "") || (username == null || username == "") || (password == null || password == "")){
+                    window.alert("請先填寫註冊資訊");
+                    return false;
+                } 
+                return true;
+            }
+            function checkSignIn(){
+                let username = document.querySelector('input[name="usernameIn"]').value;
+                let password = document.querySelector('input[name="passwordIn"]').value;
+                if((username == null || username == "") || (password == null || password == "")){
+                    window.alert("請先填寫登入資訊");
+                    return false;
+                } 
+                else{
+                    return true;
+                }
+            }
+        </script>
+    </body>
+</html>
