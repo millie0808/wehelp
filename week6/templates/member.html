@@ -7,7 +7,7 @@
     <body>
         <div class="header">歡迎光臨，這是會員頁</div>
         <br/>
-        <div class="content">{{ member_name }}，歡迎登入系統</div>
+        <div class="content">{{ user_name }}，歡迎登入系統</div>
         <form method="GET">
             <div class="content"><a href="{{ url_for('signout') }}">登出系統</a></div>
         </form>
@@ -22,7 +22,7 @@
         {% for message in all_message %}
         <div class="message">
             <div>{{ message['name'] }}：{{ message['content'] }}&ensp;</div>
-            {% if message['member_id'] == member_id %}
+            {% if message['member_id'] == user_id %}
             <form method="POST" onsubmit="return confirmDelete()" action="/deleteMessage">
                 <input type="hidden" name="messageID" value="{{ message['id'] }}">
                 <button>X</button>

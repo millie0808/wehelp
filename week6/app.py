@@ -42,10 +42,8 @@ def signin():
     query_result = cursor.fetchone()
     cursor.close()
     if query_result == None:
-        session['SIGNED-IN'] = False
         return redirect(url_for('error', message='帳號或密碼輸入錯誤'))
     else:
-        session['SIGNED-IN'] = True
         session['id'] = query_result['id']
         session['name'] = query_result['name']
         session['username'] = query_result['username']
@@ -53,14 +51,14 @@ def signin():
 
 @app.route('/member')
 def member():
-    if session['SIGNED-IN'] == True:
-        member_name = session['name']
-        member_id = session['id']
+    if 'id' in session:
+        user_name = session['name']
+        user_id = session['id']
         cursor = mydb.cursor(dictionary=True)
         cursor.execute("SELECT message.*,member.name FROM message LEFT JOIN member ON message.member_id=member.id;")
         all_message = cursor.fetchall()
         cursor.close()
-        return render_template('member.html',member_name=member_name,member_id=member_id,all_message=all_message)
+        return render_template('member.html',user_name=user_name,user_id=user_id,all_message=all_message)
     else:
         return redirect(url_for('index'))
 
@@ -71,10 +69,9 @@ def error():
 
 @app.route('/signout', methods=['GET'])
 def signout():
-    session['SIGNED-IN'] = False
-    del session['id']
-    del session['name']
-    del session['username']
+    session.pop('id',None)
+    session.pop('name',None)
+    session.pop('username',None)
     return redirect(url_for('index'))
 
 
