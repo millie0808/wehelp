@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <title>會員頁面</title>
     <link rel="stylesheet" type="text/css" href="/allpage.css">
     <script src="/member.js"></script>
@@ -8,52 +8,61 @@
 <body>
     <div class="header">歡迎光臨，這是會員頁</div>
     <br/>
-    <div class="content">
-        <span class="ifChangeNameOri">{{ session['name'] }}</span>
-        <span class="ifChangeNameNew" style="display: none;"></span>
-        <span>，歡迎登入系統</span>
-    </div>
-    <form method="GET">
-        <div class="content"><a href="{{ url_for('signout') }}">登出系統</a></div>
-    </form>
-    <hr>
-    <div class="caption">快來留言吧</div>
-    <form method="POST" onsubmit="return checkMessage()" action="/createMessage">
-        <div class="content">內容 <input type="text" name="message" /></div>
-        <div class="content"><button>送出</button></div>
-    </form>
-    <hr>
-    <div class="caption">留言板</div>
-    {% for message in all_message %}
-    <div class="message">
-        {% if message['member_id'] == session['id'] %}
-        <div>
-            <span class="ifChangeNameOri">{{ session['name'] }}</span>
-            <span class="ifChangeNameNew" style="display: none;"></span>
-            <span>：{{ message['content'] }}&ensp;</span>
+    <div class="container">
+        <div class="welcome">
+            <div class="content">
+                <span class="ifChangeNameOri">{{ session['name'] }}</span>
+                <span class="ifChangeNameNew" style="display: none;"></span>
+                <span>，歡迎登入系統</span>
+            </div>
+            <div class="content">
+                <form method="GET">
+                    <div class="content"><a href="{{ url_for('signout') }}">登出系統</a></div>
+                </form>
+            </div>
         </div>
-        <form method="POST" onsubmit="return confirmDelete()" action="/deleteMessage">
-            <input type="hidden" name="messageID" value="{{ message['id'] }}">
-            <button>X</button>
-        </form>
-        {% else %}
-        <div>{{ message['name'] }}：{{ message['content'] }}&ensp;</div>
-        {% endif %}
-    </div>  
-    {% endfor %}
-    <hr>
-    <div class="caption">查詢會員姓名</div>
-    <div class="message">
-        <input type="text" name="username" />
-        <button onclick="searchName()">查詢</button>
+        <div class="searching">
+            <div class="caption">查詢會員姓名</div>
+            <div class="message">
+                <input type="text" name="username" />
+                <button onclick="searchName()">查詢</button>
+            </div>
+            <div class="content" id="searchNameResult" style="display: none;"></div>
+        </div>
+        <div class="changename">
+            <div class="caption">更新我的姓名</div>
+            <div class="message">
+                <input type="text" name="newName" />
+                <button onclick="changeName()">更新</button>
+            </div>
+            <div class="content" id="changeNameResult" style="display: none;"></div>
+        </div>
+        <div class="messageboard">
+            <div class="caption">留言板</div>
+            <hr>
+            {% for message in all_message %}
+            <div class="message">
+                {% if message['member_id'] == session['id'] %}
+                <div class="ifChangeNameOri">{{ session['name'] }}</div>
+                <div class="ifChangeNameNew" style="display: none;"></div>
+                <div class="words">{{ message['content'] }}&ensp;</div>
+                <form method="POST" onsubmit="return confirmDelete()" action="/deleteMessage">
+                    <input type="hidden" name="messageID" value="{{ message['id'] }}">
+                    <button>X</button>
+                </form>
+                {% else %}
+                <div class="names">{{ message['name'] }}</div>
+                <div class="words">{{ message['content'] }}&ensp;</div>
+                {% endif %}
+            </div>  
+            {% endfor %}
+            <div class="message">
+                <form method="POST" onsubmit="return checkMessage()" action="/createMessage">
+                    <input type="text" name="message" />
+                    <button>留言</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="content" id="searchNameResult" style="display: none;"></div>
-    <hr>
-    <div class="caption">更新我的姓名</div>
-    <div class="message">
-        <input type="text" name="newName" />
-        <button onclick="changeName()">更新</button>
-    </div>
-    <div class="content" id="changeNameResult" style="display: none;"></div>
 </body>
 </html>

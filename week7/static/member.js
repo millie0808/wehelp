@@ -60,7 +60,7 @@ function changeName(){
                 }
                 let newNameElem = document.querySelectorAll(".ifChangeNameNew");
                 for(let i=0; i<newNameElem.length; i++){
-                    newNameElem[i].style.display = "contents";
+                    newNameElem[i].style.display = "block";
                     newNameElem[i].innerHTML = newName;
                 }
             }

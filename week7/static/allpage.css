@@ -9,13 +9,32 @@ body{
     background-color:#123456;
     color: aliceblue;
 }
+.container{
+    display: grid;
+    grid-template-rows: 100px 110px 110px;
+    grid-template-columns: 20% 1fr 2fr 20%;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+}
+.welcome, .searching, .changename, .messageboard{
+    margin: 0px auto;
+    width: 100%;
+}
+.welcome, .searching, .changename{
+    grid-column: 2;
+    border-style: solid;
+}
+.messageboard{
+    grid-column: 3;
+    margin-bottom: auto;
+    border-style: solid;
+}
 .caption{
     font-size: 20px;
     font-weight: bold;
     height: 40px; 
     line-height:40px;
     text-align: center;
-    margin-top: 20px;
 }
 .content{
     font-size: 20px;
@@ -28,4 +47,32 @@ body{
     flex-direction: row;
     justify-content: center;
     height: 30px;
+}
+
+.ifChangeNameOri, .ifChangeNameNew, .names{
+    width: 20%;
+    margin-left: 10px;
+}
+.words{
+    flex-grow: 1;
+    flex-wrap: wrap;
+}
+hr{
+    margin:0px;
+}
+
+@media (max-width:1200px){
+    .container{
+        grid-template-columns: 10% 1fr 2fr 10%;
+    }
+}
+
+@media (max-width:600px){
+    .container{
+        grid-template-rows: 100px 110px 110px 100px;
+        grid-template-columns: 20% 1fr 20%;
+    }
+    .messageboard{
+        grid-column: 2;
+    }
 }
